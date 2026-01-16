@@ -160,20 +160,20 @@ let currentIndex = 0;
 function updateDisplay() {
     const slide = story[currentIndex];
 
-    // Update Scene Theme
+    // 1. Update Scene Theme
     document.getElementById('comic-scene').className = slide.bgTheme;
     
-    // Update Background Text
+    // 2. Update Background Text
     const bgHeadline = document.getElementById('bg-headline');
     bgHeadline.innerText = slide.bgText || "";
 
-    // Update Text Bubble
+    // 3. Update Text Bubble
     const nameTag = document.getElementById('name-tag');
     nameTag.innerText = slide.speaker;
     nameTag.style.background = slide.color;
     document.getElementById('dialogue-text').innerText = slide.text;
 
-    // Update Bubble Style (Left/Right/Villain)
+    // 4. Update Bubble Style
     const bubble = document.getElementById('speech-bubble');
     bubble.className = "bubble";
     if (slide.side === "villain") bubble.classList.add("villain");
@@ -181,17 +181,44 @@ function updateDisplay() {
     else if (slide.side === "right") bubble.classList.add("speaking-right");
     else bubble.style.display = 'block';
 
-    // Update Images
+    // 5. Update Images & FOCUS LOGIC
     const sImg = document.getElementById('spidey-img');
     const iImg = document.getElementById('iron-img');
 
-    if (slide.spidey) { sImg.src = slide.spidey; sImg.style.display = 'block'; } 
-    else { sImg.style.display = 'none'; }
+    // Handle Spidey Image
+    if (slide.spidey) { 
+        sImg.src = slide.spidey; 
+        sImg.style.display = 'block'; 
+    } else { 
+        sImg.style.display = 'none'; 
+    }
 
-    if (slide.iron) { iImg.src = slide.iron; iImg.style.display = 'block'; } 
-    else { iImg.style.display = 'none'; }
+    // Handle Iron Man Image
+    if (slide.iron) { 
+        iImg.src = slide.iron; 
+        iImg.style.display = 'block'; 
+    } else { 
+        iImg.style.display = 'none'; 
+    }
 
-    // Update Buttons
+    // --- NEW: FOCUS LOGIC (Dim the listener) ---
+    // Remove 'inactive' class from both first
+    sImg.classList.remove('inactive');
+    iImg.classList.remove('inactive');
+
+    if (slide.speaker === "SPIDEY") {
+        // If Spidey speaks, dim Iron Man
+        iImg.classList.add('inactive');
+    } else if (slide.speaker === "IRON MAN") {
+        // If Iron Man speaks, dim Spidey
+        sImg.classList.add('inactive');
+    } else if (slide.side === "villain") {
+        // If Villain, dim both heroes (scary effect)
+        sImg.classList.add('inactive');
+        iImg.classList.add('inactive');
+    }
+
+    // 6. Update Buttons
     document.getElementById('prev-btn').disabled = (currentIndex === 0);
     if (currentIndex === story.length - 1) {
         document.getElementById('next-btn').style.display = 'none';
