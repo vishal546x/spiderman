@@ -3,6 +3,7 @@ const registerLink = "https://forms.google.com/your-form-link";
 
 // --- FULL STORY SCRIPT ---
 const story = [
+    // --- INTRO ---
     {
         speaker: "SPIDEY",
         color: "#E23636",
@@ -20,7 +21,7 @@ const story = [
         bgTheme: "bg-comic",
         bgText: "WELCOME TO\nTECH SYMPOSIUM",
         spidey: "images/spidey1.png",
-        iron: "images/iron2.png",
+        iron: "images/iron1.png",
         side: "right"
     },
     {
@@ -40,17 +41,19 @@ const story = [
         bgTheme: "bg-tech",
         bgText: "SYSTEM STATUS:\nONLINE",
         spidey: "images/spidey2.png",
-        iron: "images/iron3.png",
+        iron: "images/iron2.png",
         side: "right"
     },
+
+    // --- EVENT 1: PAPER PRESENTATION ---
     {
         speaker: "SPIDEY",
         color: "#E23636",
         text: "First up: PAPER PRESENTATION. It’s where the big brains show off their research.",
         bgTheme: "bg-matrix",
-        bgText: "TOPIC:\nINNOVATION",
+        bgText: "EVENT 1:\nPAPER PRESENTATION",
         spidey: "images/spidey3.png",
-        iron: "images/iron1.png",
+        iron: "images/iron2.png",
         side: "left"
     },
     {
@@ -58,51 +61,111 @@ const story = [
         color: "#F5D033",
         text: "Research? Sounds tedious. Reminds me of Strange. Does it come with a magical headache?",
         bgTheme: "bg-matrix",
-        bgText: "TOPIC:\nINNOVATION",
-        spidey: "images/spidey2.png",
-        iron: "images/iron2.png",
+        bgText: "EVENT 1:\nPAPER PRESENTATION",
+        spidey: "images/spidey3.png",
+        iron: "images/iron3.png",
         side: "right"
     },
+
+    // --- EVENT 2: HACKATHON ---
     {
         speaker: "SPIDEY",
         color: "#E23636",
-        text: "No magic! Next is the CODING CONTEST. You gotta have fast fingers for this one.",
+        text: "No magic! Next is the HACKATHON! A non-stop coding marathon for the real builders.",
         bgTheme: "bg-matrix",
-        bgText: "CODING\nWARS",
-        spidey: "images/spidey1.png",
+        bgText: "EVENT 2:\nHACKATHON",
+        spidey: "images/spidey4.png",
+        iron: "images/iron3.png",
+        side: "left"
+    },
+    {
+        speaker: "IRON MAN",
+        color: "#F5D033",
+        text: "Builders? Unless they built this in a cave with a box of scraps, I'm not impressed.",
+        bgTheme: "bg-matrix",
+        bgText: "EVENT 2:\nHACKATHON",
+        spidey: "images/spidey4.png",
+        iron: "images/iron4.png",
+        side: "right"
+    },
+
+    // --- EVENT 3: TECHNOPOLY (FUN MODE) ---
+    {
+        speaker: "SPIDEY",
+        color: "#E23636",
+        text: "You're tough to please! How about TECHNOPOLY – FUN MODE? It's like Monopoly, but tech-themed!",
+        bgTheme: "bg-matrix", // Using Matrix theme for consistency with events
+        bgText: "EVENT 3:\nTECHNOPOLY",
+        spidey: "images/spidey5.png",
+        iron: "images/iron4.png",
+        side: "left"
+    },
+    {
+        speaker: "IRON MAN",
+        color: "#F5D033",
+        text: "Technopoly? I already own everything on the board. Do I win by default?",
+        bgTheme: "bg-matrix",
+        bgText: "EVENT 3:\nTECHNOPOLY",
+        spidey: "images/spidey2.png",
+        iron: "images/iron3.png",
+        side: "right"
+    },
+
+    // --- EVENT 4: TECHTRIO CHALLENGE ---
+    {
+        speaker: "SPIDEY",
+        color: "#E23636",
+        text: "No cheating! Finally, the TECHTRIO CHALLENGE – A 3-in-1 Fun-Tech Event! It's the ultimate test.",
+        bgTheme: "bg-matrix",
+        bgText: "EVENT 4:\nTECHTRIO",
+        spidey: "images/spidey3.png",
         iron: "images/iron1.png",
         side: "left"
     },
     {
         speaker: "IRON MAN",
         color: "#F5D033",
-        text: "Fast? I doubt they can code faster than JARVIS. But I'll allow it.",
+        text: "Three in one? Efficient. I like efficiency. Maybe this Symposium has potential after all.",
         bgTheme: "bg-matrix",
-        bgText: "CODING\nWARS",
+        bgText: "EVENT 4:\nTECHTRIO",
         spidey: "images/spidey1.png",
         iron: "images/iron3.png",
         side: "right"
     },
+
+    // --- TRANSPORTATION / BUS ROUTES (3 Slides) ---
     {
         speaker: "SPIDEY",
         color: "#E23636",
-        text: "Wait... Mr. Stark, I'm looking at the Bus Routes. This list is longer than the SNYDER CUT!",
+        text: "Wait... Mr. Stark, look at the TRANSPORT details! This Bus Route list is huge!",
         bgTheme: "bg-map",
-        bgText: "BUS ROUTES\n(LONG LIST)",
-        spidey: "images/spidey3.png",
-        iron: "images/iron2.png",
+        bgText: "TRANSPORT:\nAVAILABLE",
+        spidey: "images/spidey3.png", // Shocked
+        iron: "images/iron1.png",
         side: "left"
     },
     {
         speaker: "IRON MAN",
         color: "#F5D033",
-        text: "It's thorough! We leave no student behind. Unlike some heroes who forget their sidekicks.",
+        text: "We cover every major route. City center to the outskirts. No student gets left behind.",
         bgTheme: "bg-map",
-        bgText: "BUS ROUTES\n(LONG LIST)",
+        bgText: "TRANSPORT:\nAVAILABLE",
         spidey: "images/spidey2.png",
-        iron: "images/iron3.png",
+        iron: "images/iron3.png", // Pointing/Explaining
         side: "right"
     },
+    {
+        speaker: "SPIDEY",
+        color: "#E23636",
+        text: "Awesome! That saves me some webs. Swinging through morning traffic is a nightmare.",
+        bgTheme: "bg-map",
+        bgText: "TRANSPORT:\nAVAILABLE",
+        spidey: "images/spidey1.png", // Relieved/Happy
+        iron: "images/iron2.png",
+        side: "left"
+    },
+
+    // --- THE EXIT ---
     {
         speaker: "IRON MAN",
         color: "#F5D033",
@@ -123,6 +186,8 @@ const story = [
         iron: null, 
         side: "left"
     },
+
+    // --- THE VILLAIN ---
     {
         speaker: "???",
         color: "#555",
