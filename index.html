@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symposium: Civil War of Words</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="comic-scene" class="bg-comic">
+        
+        <div class="cinema-bar bar-top"></div>
+        <div class="cinema-bar bar-bottom"></div>
+
+        <div id="bg-headline"></div>
+
+        <div class="dialogue-container">
+            <div id="name-tag" class="speaker-name" style="background: red;">SPIDEY</div>
+            <div id="speech-bubble" class="bubble speaking-left">
+                <span id="dialogue-text" class="text-content">Loading...</span>
+            </div>
+        </div>
+
+        <img id="spidey-img" class="character" src="" alt="Spider-Man" style="display:none;"> 
+        <img id="iron-img" class="character" src="" alt="Iron Man" style="display:none;">
+
+        <div class="controls">
+            <button id="prev-btn" onclick="changeSlide(-1)">PREV</button>
+            <button id="next-btn" onclick="changeSlide(1)">NEXT ></button>
+            <button id="register-btn" onclick="openRegisterLink()">ASSEMBLE & REGISTER!</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
