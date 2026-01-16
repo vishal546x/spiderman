@@ -18,10 +18,34 @@ body {
     transition: all 0.5s ease;
 }
 
+/* --- NEW: THINNER CINEMATIC BORDERS --- */
+.cinema-border {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    
+    /* CHANGED: Reduced from 12vh to 6vh */
+    height: 8vh; 
+    
+    background: #000;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.border-top {
+    top: 0;
+    border-bottom: 2px solid #333;
+}
+
+.border-bottom {
+    bottom: 0;
+    border-top: 2px solid #333;
+}
+
 /* --- 2. BACKGROUND INFO TEXT --- */
 #bg-headline {
     position: absolute;
-    top: 30%;
+    top: 35%; 
     left: 50%;
     transform: translate(-50%, -50%) rotate(-5deg);
     width: 90%;
@@ -83,10 +107,10 @@ body {
 /* --- 4. CHARACTERS --- */
 .character {
     position: absolute;
-    bottom: 0; 
-    height: 50vh; /* Default Desktop height */
+    bottom: 0; /* Aligned with bottom of screen */
+    height: 55vh; 
     max-width: 40vw;
-    z-index: 2; /* Behind the text box */
+    z-index: 5; /* Behind borders */
     transition: all 0.4s ease;
     filter: drop-shadow(5px 5px 0px rgba(0,0,0,0.5));
     object-fit: contain;
@@ -102,12 +126,13 @@ body {
 /* --- 5. DIALOGUE BOX --- */
 .dialogue-container {
     position: absolute;
-    bottom: 80px; 
+    /* CHANGED: Moved down since border is thinner */
+    bottom: 10vh; 
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
     max-width: 700px;
-    z-index: 20; /* In front of characters */
+    z-index: 20;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -152,7 +177,8 @@ body {
 /* --- 6. CONTROLS --- */
 .controls {
     position: absolute;
-    bottom: 20px;
+    /* CHANGED: Adjusted to sit inside the thinner border */
+    bottom: 1vh; 
     left: 50%;
     transform: translateX(-50%);
     z-index: 30;
@@ -162,8 +188,8 @@ body {
 
 button {
     font-family: 'Bangers', cursive;
-    font-size: 1.2rem;
-    padding: 10px 25px;
+    font-size: 1rem; /* Slightly smaller button text */
+    padding: 8px 20px;
     cursor: pointer;
     border: 2px solid #fff;
     background: #FFD700;
@@ -176,55 +202,29 @@ button:hover { transform: translateY(-2px); background: #fff; }
 @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
 
-/* --- 7. MOBILE VIEW ADJUSTMENTS (SMALLER BOX FIX) --- */
+/* --- 7. MOBILE VIEW ADJUSTMENTS --- */
 @media (max-width: 768px) {
-    /* 1. Headline */
-    #bg-headline {
-        font-size: 2.5rem;
-        top: 20%; 
-    }
+    #bg-headline { font-size: 2.5rem; top: 25%; }
 
-    /* 2. CHARACTERS (Tall & Wide) */
+    /* Fix Characters */
     .character {
         bottom: 0; 
         height: 60vh; 
         max-width: 55vw; 
     }
-    
     #spidey-img { left: -30px; }
     #iron-img { right: -30px; }
 
-    /* 3. SMALLER DIALOGUE BOX */
+    /* Fix Box */
     .dialogue-container {
-        bottom: 70px; 
-        width: 85%; /* Reduced Width from 95% */
+        bottom: 12vh; /* Just above the buttons/border */
+        width: 85%;
     }
+    .bubble { padding: 5px 10px; border: 2px solid #000; }
+    .text-content { font-size: 0.9rem; line-height: 1.2; }
+    .speaker-name { font-size: 0.75rem; padding: 2px 6px; margin-bottom: -8px; }
 
-    .bubble {
-        padding: 5px 10px; /* Reduced Padding */
-        border: 2px solid #000;
-    }
-
-    .text-content {
-        font-size: 0.9rem; /* Reduced Font Size */
-        line-height: 1.2;
-    }
-
-    .speaker-name {
-        font-size: 0.75rem; /* Smaller Name Tag */
-        padding: 2px 6px;
-        margin-bottom: -8px;
-    }
-
-    /* 4. Controls */
-    .controls {
-        bottom: 15px;
-        width: 100%;
-        justify-content: center;
-    }
-
-    button {
-        padding: 6px 20px;
-        font-size: 1rem;
-    }
+    /* Fix Controls */
+    .controls { bottom: 1.5vh; }
+    button { padding: 5px 15px; font-size: 0.9rem; }
 }

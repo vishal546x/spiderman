@@ -182,7 +182,7 @@ const story = [
         text: "Mr. Stark? Seriously? You can't just fly off! It's pitch black in here!",
         bgTheme: "bg-black",
         bgText: "",
-        spidey: "images/spidey3.png",
+        spidey: "images/spidey6.png",
         iron: null, 
         side: "left"
     },
@@ -214,7 +214,7 @@ const story = [
         text: "GUYS! HELP! Assemble your team and REGISTER before he installs Linux on everything!",
         bgTheme: "bg-doom",
         bgText: "DOOM\nIS HERE",
-        spidey: "images/spidey3.png",
+        spidey: "images/spidey6.png",
         iron: null,
         side: "left"
     }
