@@ -19,6 +19,44 @@ body {
     overflow: hidden;
     transition: background-image 0.5s ease-in-out; 
 }
+/* ========================================= */
+/* ANIMATED BACKGROUND PARTICLES             */
+/* ========================================= */
+
+/* The Particle Style */
+.tech-particle {
+    position: absolute;
+    bottom: -20px; /* Start below screen */
+    background: rgba(255, 255, 255, 0.05); /* Very faint white */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+    z-index: -1; /* Stay BEHIND the text/logos */
+    animation: floatUp linear infinite;
+}
+
+/* The Floating Animation */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg); /* Move way up and spin */
+        opacity: 0;
+    }
+}
+
+/* Ensure the Intro Container allows absolute items inside it */
+#game-intro {
+    overflow: hidden; /* Prevents scrollbars if particles go weird */
+    position: fixed; /* (Confirming this is set) */
+}
 
 /* ========================================= */
 /* 2. GAME INTRO SCREEN (START PAGE)         */
@@ -26,136 +64,149 @@ body {
 /* ========================================= */
 /* NEW: INTRO MENU SCREEN STYLES             */
 /* ========================================= */
+/* ========================================= */
+/* DARK COMIC INTRO THEME                    */
+/* ========================================= */
 
 #game-intro {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    
-    /* Dark Background with Dot Pattern */
-    background-color: #0b0b0b;
-    background-image: radial-gradient(#222 15%, #0b0b0b 16%);
-    background-size: 30px 30px;
-    
+    /* Dark Rainy City Background Color */
+    background: linear-gradient(to bottom, #050505, #1a1a1a);
     z-index: 9999; 
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    justify-content: space-between; /* Pushes Header to top, Footer to bottom */
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
-    transition: opacity 0.8s ease-in-out;
+    overflow: hidden;
+    transition: opacity 1s ease-in-out;
 }
 
-/* 1. HEADER (LOGOS) */
-/* --- UPDATED HEADER STYLES --- */
+/* --- VIGNETTE (Dark Edges) --- */
+.vignette-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, transparent 40%, #000 90%);
+    z-index: 2; /* On top of background, below text */
+    pointer-events: none;
+}
+
+/* --- RAIN ANIMATION --- */
+.rain-container {
+    position: absolute;
+    width: 100%; height: 100%;
+    z-index: 1;
+    background-image: url('https://i.imgur.com/71X1s5G.png'); /* Simple rain texture */
+    animation: rainFall 0.5s linear infinite;
+    opacity: 0.3;
+}
+@keyframes rainFall {
+    from { background-position: 0 0; }
+    to { background-position: -20px 600px; }
+}
+
+/* --- LOGOS (Dimmed to fit the mood) --- */
 .intro-header {
-    width: 100%;
-    max-width: 1400px; /* Increased to give logos more room */
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    padding: 20px 50px; /* More spacing from edges */
-    box-sizing: border-box;
+    z-index: 10;
+    width: 100%; max-width: 1200px;
+    display: flex; justify-content: space-between;
+    padding: 20px 40px;
+    filter: grayscale(80%) brightness(0.8); /* Muted colors */
+    transition: filter 0.5s;
 }
+.intro-header:hover { filter: grayscale(0%) brightness(1); } /* Light up on hover */
 
-.menu-logo {
-    height: 140px; /* INCREASED from 80px to 140px */
-    width: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
-    transition: transform 0.3s;
-}
+.menu-logo { height: 100px; width: auto; object-fit: contain; }
 
-.menu-logo:hover {
-    transform: scale(1.1); /* Nice pop effect on hover */
-}
+/* --- TITLE (Neon Glow) --- */
+.intro-content { z-index: 10; text-align: center; margin-top: -20px; }
 
-/* Mobile Adjustment */
-@media (max-width: 768px) {
-    .menu-logo { height: 70px; } /* Increased from 50px */
-    .intro-header { padding: 20px; }
-}
-
-/* 2. CENTER CONTENT (TITLE) */
-.intro-content {
-    text-align: center;
-    /* No border box now, just clean text floating in space */
-}
-
-.game-title {
+.game-title.neon-text {
     font-family: 'Bangers', cursive;
-    font-size: 7rem; /* Bigger title */
+    font-size: 7rem;
     line-height: 0.9;
-    color: #F5D033;
-    text-shadow: 6px 6px 0 #E23636;
-    margin: 0;
-    letter-spacing: 3px;
-    animation: pulseStart 3s infinite ease-in-out;
+    color: #fff;
+    /* Red Neon Glow */
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #e60000,
+        0 0 40px #e60000,
+        0 0 80px #e60000;
+    animation: flicker 4s infinite;
 }
 
 .game-subtitle {
-    font-family: 'Comic Neue', cursive;
-    font-size: 1.5rem;
-    color: #fff;
-    letter-spacing: 5px;
-    margin-top: 10px;
-    opacity: 0.8;
+    color: #ccc; letter-spacing: 6px; font-family: 'Comic Neue', cursive;
 }
 
-/* 3. FOOTER (TIMER & BUTTONS) */
+/* --- SILHOUETTE CHARACTERS --- */
+.intro-char {
+    position: absolute;
+    bottom: 0;
+    height: 70vh; /* Big and imposing */
+    z-index: 5; /* Behind text, in front of rain */
+    filter: brightness(0.1) drop-shadow(0 0 10px rgba(255,255,255,0.1)); /* Almost black */
+    transition: filter 0.5s;
+}
+.char-left { left: -5%; transform: scaleX(-1); /* Flip if needed */ }
+.char-right { right: -5%; }
+
+/* Hover Effect: Reveal them slightly */
+.intro-char:hover { filter: brightness(0.8); }
+
+/* --- FOOTER & BUTTONS --- */
 .intro-footer {
-    text-align: center;
+    z-index: 10; text-align: center; padding-bottom: 40px;
     width: 100%;
-    padding-bottom: 40px;
 }
 
-.menu-timer-box {
-    color: #fff;
-    font-family: 'Courier New', monospace;
-    margin-bottom: 30px;
-}
-.menu-timer-box span {
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    color: #E23636;
-}
 #intro-timer {
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-shadow: 0 0 10px #E23636;
+    color: #e60000; font-family: 'Courier New', monospace;
+    font-size: 2rem; font-weight: bold;
+    text-shadow: 0 0 10px red;
 }
 
 #start-story-btn {
+    background: transparent;
+    border: 3px solid #e60000;
+    color: #fff;
     font-family: 'Bangers', cursive;
     font-size: 2rem;
     padding: 15px 50px;
-    background-color: #E23636;
-    color: #fff;
-    border: 3px solid #fff;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px #e60000;
     cursor: pointer;
-    box-shadow: 0 0 20px rgba(226, 54, 54, 0.4);
-    transition: all 0.2s;
+    transition: all 0.3s;
 }
 #start-story-btn:hover {
-    transform: scale(1.1);
-    background-color: #fff;
-    color: #E23636;
+    background: #e60000;
+    box-shadow: 0 0 40px #e60000;
 }
 
 .intro-register-link {
-    display: inline-block;
-    margin-top: 20px;
-    color: #F5D033;
-    font-family: 'Comic Neue', cursive;
-    font-size: 1.2rem;
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s;
+    color: #888; text-decoration: none; margin-top: 15px; display: block;
+    font-family: 'Comic Neue', cursive; letter-spacing: 1px;
 }
-.intro-register-link:hover {
-    border-bottom: 2px solid #F5D033;
-    letter-spacing: 1px;
+.intro-register-link:hover { color: #fff; text-shadow: 0 0 5px white; }
+
+/* --- ANIMATIONS --- */
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #e60000, 0 0 40px #e60000, 0 0 80px #e60000;
+    }
+    20%, 24%, 55% {       
+        text-shadow: none; opacity: 0.8;
+    }
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .game-title.neon-text { font-size: 3.5rem; }
+    .intro-char { height: 40vh; opacity: 0.5; } /* Fade them out on mobile so text is readable */
+    .menu-logo { height: 50px; }
+    .intro-header { padding: 15px; }
 }
 
 /* Helper to hide */
@@ -444,4 +495,95 @@ button:hover { transform: translateY(-2px); background: #fff; }
     0% { transform: scale(0.9); opacity: 0.7; }
     50% { transform: scale(1.02); opacity: 1; }
     100% { transform: scale(1); }
+}
+/* ========================================= */
+/* PART G: ADVANCED INTRO ANIMATIONS         */
+/* ========================================= */
+
+/* --- 1. LOGOS (Slide Down from Top) --- */
+.intro-header {
+    animation: slideDownBounce 1s ease-out forwards;
+}
+
+/* --- 2. GAME TITLE (Elastic Zoom + Floating) --- */
+.game-title {
+    opacity: 0; /* Hidden initially */
+    animation: 
+        zoomInElastic 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.5s, /* Enters at 0.5s */
+        floatIdle 3s ease-in-out infinite 1.5s; /* Starts floating after entering */
+}
+
+/* --- 3. SUBTITLE (Fade In) --- */
+.game-subtitle {
+    opacity: 0;
+    animation: fadeInSimple 1s ease-out forwards 1s; /* Enters at 1s */
+}
+
+/* --- 4. TIMER (Slide Up) --- */
+.menu-timer-box {
+    opacity: 0;
+    animation: slideUpFade 0.8s ease-out forwards 1.2s; /* Enters at 1.2s */
+}
+
+/* --- 5. BUTTON (Pop In) --- */
+#start-story-btn {
+    opacity: 0; /* Hidden initially */
+    /* Combines the Pop In entrance AND the Pulse loop */
+    animation: 
+        zoomInElastic 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 1.5s, 
+        pulseStart 1.5s infinite 2.3s; /* Pulse starts after entrance */
+}
+
+/* --- 6. REGISTER LINK (Shimmering Attention) --- */
+.intro-register-link {
+    opacity: 0;
+    position: relative;
+    display: inline-block;
+    animation: slideUpFade 0.8s ease-out forwards 1.8s; /* Enters last */
+}
+
+/* Make the link glow gold continuously */
+.intro-register-link {
+    animation: goldGlow 2s infinite alternate 2s; /* Continuous Glow */
+}
+
+
+/* ========================================= */
+/* KEYFRAMES (The Math behind the moves)     */
+/* ========================================= */
+
+/* 1. Slide Down with a little bounce */
+@keyframes slideDownBounce {
+    0% { transform: translateY(-100px); opacity: 0; }
+    60% { transform: translateY(10px); opacity: 1; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* 2. Elastic Zoom (Used for Title & Button) */
+@keyframes zoomInElastic {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* 3. Simple Fade In */
+@keyframes fadeInSimple {
+    to { opacity: 1; }
+}
+
+/* 4. Slide Up from bottom */
+@keyframes slideUpFade {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* 5. Floating (Idle movement for Title) */
+@keyframes floatIdle {
+    0%, 100% { transform: translateY(0) rotate(-2deg); } /* Keep the tilt */
+    50% { transform: translateY(-10px) rotate(-2deg); }
+}
+
+/* 6. Gold Glow (For Register Link) */
+@keyframes goldGlow {
+    0% { text-shadow: 0 0 5px #F5D033; transform: scale(1); }
+    100% { text-shadow: 0 0 20px #F5D033, 0 0 10px orange; transform: scale(1.05); }
 }

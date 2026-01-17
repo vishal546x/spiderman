@@ -7,159 +7,178 @@ let introPlayed = false; // Tracks if the game start animation has happened
 let typingTimeout; // To stop typing if user clicks next quickly
 
 // --- FULL STORY SCRIPT ---
+// --- FULL STORY SCRIPT (FUNNY EDITION) ---
+// --- FULL STORY SCRIPT: THE CIVIL WAR DEBATE ---
 const story = [
-    // --- INTRO ---
+    // --- INTRO: IRON MAN'S VIEW ---
     {
         speaker: "SPIDEY",
         color: "#E23636",
-        text: "Mr. Stark! The Symposium site is live! Are the servers ready?",
+        text: "Welcome to the Symposium! I'm your host, Spidey. Today we settle the debate: Tech vs. Tradition!",
         bgClass: "bg-intro", 
-        showOverlay: false,    
         bgText: "WELCOME TO\nTECH SYMPOSIUM", 
         spidey: "images/spidey1.png",
-        iron: "images/iron1.png",
+        iron: "images/iron1.png", // Iron Man is here
         side: "left"
     },
     {
         speaker: "IRON MAN",
         color: "#F5D033",
-        text: "Please. I spend more on coffee than Wayne Enterprises is worth.",
+        text: "It's not a debate. It's a roast. I have lasers and AI. Rogers has a frisbee.",
         bgClass: "bg-intro",   
-        showOverlay: false,
         bgText: "WELCOME TO\nTECH SYMPOSIUM",
         spidey: "images/spidey1.png",
         iron: "images/iron1.png",
         side: "right"
     },
+
+    // --- CAPTAIN AMERICA ENTERS (Use Cap's Image in the 'iron' slot) ---
+    {
+        speaker: "CAPTAIN AMERICA",
+        color: "#3366CC", // Blue for Cap
+        text: "It's a shield, Stark. And it stands for discipline. Something this Symposium needs.",
+        bgClass: "bg-intro", 
+        bgText: "CHOOSE YOUR\nSIDE",
+        spidey: "images/spidey2.png",
+        iron: "images/cap1.png", // <--- PUT CAP IMAGE HERE
+        side: "right"
+    },
     {
         speaker: "SPIDEY",
         color: "#E23636",
-        text: "Okay, good. Because last time the Wi-Fi crashed, I had to use a carrier pigeon.",
-        bgClass: "bg-intro", 
-        showOverlay: false,
-        bgText: "SYSTEM STATUS:\nONLINE",
-        spidey: "images/spidey2.png",
-        iron: "images/iron1.png",
-        side: "left"
+        text: "Whoa! Cap is here! Okay, let's look at the events. Round 1: PAPER PRESENTATION.",
+        bgClass: "bg-intro", bgText: "EVENT 1:\nPAPER PRESENTATION",
+        spidey: "images/spidey2.png", iron: "images/cap1.png", side: "left"
     },
-    // ... (Keep the rest of your story slides here) ...
+
+    // --- EVENT 1: PAPER PRESENTATION (Cap's Turn) ---
+    {
+        speaker: "CAPTAIN AMERICA",
+        color: "#3366CC",
+        text: "Good. Research requires patience. You can't just ask an AI to write your thesis, Tony.",
+        bgClass: "bg-intro", bgText: "EVENT 1:\nPAPER PRESENTATION",
+        spidey: "images/spidey3.png", iron: "images/cap1.png", side: "right"
+    },
+    {
+        speaker: "IRON MAN", // Iron Man swaps back in
+        color: "#F5D033",
+        text: "Patience is for people with slow Wi-Fi. I want to see holograms and quantum theories!",
+        bgClass: "bg-intro", bgText: "EVENT 1:\nPAPER PRESENTATION",
+        spidey: "images/spidey3.png", iron: "images/iron2.png", side: "right"
+    },
+
+    // --- EVENT 2: HACKATHON (Iron Man's Turn) ---
+    {
+        speaker: "SPIDEY",
+        color: "#E23636",
+        text: "Okay, settle down! Round 2: The HACKATHON. 24 hours of coding. Pure stamina.",
+        bgClass: "bg-intro", bgText: "EVENT 2:\nHACKATHON",
+        spidey: "images/spidey4.png", iron: "images/iron2.png", side: "left"
+    },
     {
         speaker: "IRON MAN",
         color: "#F5D033",
-        text: "Relax, Underoos. Even Ultron couldn't hack this. Now, show me the event list.",
-        bgClass: "bg-intro", showOverlay: false, bgText: "SYSTEM STATUS:\nONLINE",
+        text: "My favorite. If your code isn't compiling in nanoseconds, are you even trying?",
+        bgClass: "bg-intro", bgText: "EVENT 2:\nHACKATHON",
+        spidey: "images/spidey4.png", iron: "images/iron3.png", side: "right"
+    },
+    {
+        speaker: "CAPTAIN AMERICA", // Cap swaps back in
+        color: "#3366CC",
+        text: "Endurance is key. It's not about speed, it's about not crashing when the pressure hits.",
+        bgClass: "bg-intro", bgText: "EVENT 2:\nHACKATHON",
+        spidey: "images/spidey4.png", iron: "images/cap1.png", side: "right"
+    },
+
+    // --- EVENT 3: TECHNOPOLY (The Argument) ---
+    {
+        speaker: "SPIDEY",
+        color: "#E23636",
+        text: "Round 3: TECHNOPOLY! It's a business strategy game. Buying companies, making deals.",
+        bgClass: "bg-intro", bgText: "EVENT 3:\nTECHNOPOLY",
+        spidey: "images/spidey5.png", iron: "images/cap1.png", side: "left"
+    },
+    {
+        speaker: "CAPTAIN AMERICA",
+        color: "#3366CC",
+        text: "Be careful. A monopoly is dangerous. You need fair competition and rules.",
+        bgClass: "bg-intro", bgText: "EVENT 3:\nTECHNOPOLY",
+        spidey: "images/spidey5.png", iron: "images/cap1.png", side: "right"
+    },
+    {
+        speaker: "IRON MAN",
+        color: "#F5D033",
+        text: "Oh please. I'd just buy the bank and rename it 'Starkopoly'. It's called winning, Cap.",
+        bgClass: "bg-intro", bgText: "EVENT 3:\nTECHNOPOLY",
+        spidey: "images/spidey2.png", iron: "images/iron3.png", side: "right"
+    },
+
+    // --- EVENT 4: TECHTRIO ---
+    {
+        speaker: "SPIDEY",
+        color: "#E23636",
+        text: "Let's move on... TECHTRIO! 3 events in 1. It forces you to be a versatile engineer.",
+        bgClass: "bg-intro", bgText: "EVENT 4:\nTECHTRIO",
+        spidey: "images/spidey3.png", iron: "images/iron1.png", side: "left"
+    },
+    {
+        speaker: "CAPTAIN AMERICA",
+        color: "#3366CC",
+        text: "I like this one. You need a balanced team. Soldiers, scientists, and... billionaires.",
+        bgClass: "bg-intro", bgText: "EVENT 4:\nTECHTRIO",
+        spidey: "images/spidey3.png", iron: "images/cap1.png", side: "right"
+    },
+
+    // --- TRANSPORT ---
+    {
+        speaker: "SPIDEY",
+        color: "#E23636",
+        text: "And for logistics: BUS ROUTES! We cover the whole city so everyone can attend.",
+        bgClass: "bg-intro", bgText: "TRANSPORT:\nAVAILABLE",
+        spidey: "images/spidey3.png", iron: "images/cap1.png", side: "left"
+    },
+    {
+        speaker: "CAPTAIN AMERICA",
+        color: "#3366CC",
+        text: "Good work, son. No soldier left behind. Accessibility is a priority.",
+        bgClass: "bg-intro", bgText: "TRANSPORT:\nAVAILABLE",
+        spidey: "images/spidey2.png", iron: "images/cap1.png", side: "right"
+    },
+    {
+        speaker: "IRON MAN",
+        color: "#F5D033",
+        text: "I suppose. Not everyone has a suit. Alright, I declare a truce. The event looks solid.",
+        bgClass: "bg-intro", bgText: "TRANSPORT:\nAVAILABLE",
         spidey: "images/spidey2.png", iron: "images/iron2.png", side: "right"
     },
+
+    // --- THE TWIST (Doom) ---
     {
         speaker: "SPIDEY",
         color: "#E23636",
-        text: "First up: PAPER PRESENTATION. It’s where the big brains show off their research.",
-        bgClass: "bg-intro", showOverlay: false, bgText: "EVENT 1:\nPAPER PRESENTATION",
-        spidey: "images/spidey3.png", iron: "images/iron2.png", side: "left"
+        text: "Awesome! Civil War is over! Now let's just— wait, why are the screens flickering green?",
+        bgClass: "bg-intro", bgText: "CONNECTING...",
+        spidey: "images/spidey6.png", iron: "images/iron2.png", side: "left"
     },
     {
         speaker: "IRON MAN",
         color: "#F5D033",
-        text: "Research? Sounds tedious. Reminds me of Strange. Does it come with a magical headache?",
-        bgClass: "bg-intro", showOverlay: false, bgText: "EVENT 1:\nPAPER PRESENTATION",
-        spidey: "images/spidey3.png", iron: "images/iron3.png", side: "right"
-    },
-    {
-        speaker: "SPIDEY",
-        color: "#E23636",
-        text: "No magic! Next is the HACKATHON! A non-stop coding marathon.",
-        bgClass: "bg-intro", showOverlay: false, bgText: "EVENT 2:\nHACKATHON",
-        spidey: "images/spidey4.png", iron: "images/iron3.png", side: "left"
-    },
-    {
-        speaker: "IRON MAN",
-        color: "#F5D033",
-        text: "Builders? Unless they built this in a cave with a box of scraps, I'm not impressed.",
-        bgClass: "bg-intro", showOverlay: false, bgText: "EVENT 2:\nHACKATHON",
-        spidey: "images/spidey4.png", iron: "images/iron4.png", side: "right"
-    },
-    {
-        speaker: "SPIDEY",
-        color: "#E23636",
-        text: "You're tough to please! How about TECHNOPOLY – FUN MODE?",
-        bgClass: "bg-intro", showOverlay: false, bgText: "EVENT 3:\nTECHNOPOLY",
-        spidey: "images/spidey5.png", iron: "images/iron4.png", side: "left"
-    },
-    {
-        speaker: "IRON MAN",
-        color: "#F5D033",
-        text: "Technopoly? I already own everything on the board. Do I win by default?",
-        bgClass: "bg-intro", showOverlay: false, bgText: "EVENT 3:\nTECHNOPOLY",
-        spidey: "images/spidey2.png", iron: "images/iron3.png", side: "right"
-    },
-    {
-        speaker: "SPIDEY",
-        color: "#E23636",
-        text: "No cheating! Finally, the TECHTRIO CHALLENGE – A 3-in-1 Fun-Tech Event!",
-        bgClass: "bg-intro", showOverlay: false, bgText: "EVENT 4:\nTECHTRIO",
-        spidey: "images/spidey3.png", iron: "images/iron1.png", side: "left"
-    },
-    {
-        speaker: "IRON MAN",
-        color: "#F5D033",
-        text: "Three in one? Efficient. I like efficiency. Maybe this Symposium has potential after all.",
-        bgClass: "bg-intro", showOverlay: false, bgText: "EVENT 4:\nTECHTRIO",
-        spidey: "images/spidey1.png", iron: "images/iron3.png", side: "right"
-    },
-    {
-        speaker: "SPIDEY",
-        color: "#E23636",
-        text: "Wait... Mr. Stark, look at the TRANSPORT details! This Bus Route list is huge!",
-        bgClass: "bg-intro", showOverlay: false, bgText: "TRANSPORT:\nAVAILABLE",
-        spidey: "images/spidey3.png", iron: "images/iron1.png", side: "left"
-    },
-    {
-        speaker: "IRON MAN",
-        color: "#F5D033",
-        text: "We cover every major route. City center to the outskirts. No student gets left behind.",
-        bgClass: "bg-intro", showOverlay: false, bgText: "TRANSPORT:\nAVAILABLE",
-        spidey: "images/spidey2.png", iron: "images/iron3.png", side: "right"
-    },
-    {
-        speaker: "SPIDEY",
-        color: "#E23636",
-        text: "Awesome! That saves me some webs. Swinging through morning traffic is a nightmare.",
-        bgClass: "bg-intro", showOverlay: false, bgText: "TRANSPORT:\nAVAILABLE",
-        spidey: "images/spidey1.png", iron: "images/iron2.png", side: "left"
-    },
-    {
-        speaker: "IRON MAN",
-        color: "#F5D033",
-        text: "Anyway, Pepper is calling. Dinner reservations. You handle the rest, kid.",
-        bgClass: "bg-intro", showOverlay: false, bgText: "CONNECTING...",
-        spidey: "images/spidey1.png", iron: "images/iron2.png", side: "right"
-    },
-    {
-        speaker: "SPIDEY",
-        color: "#E23636",
-        text: "Mr. Stark? Seriously? You can't just fly off! It's pitch black in here!",
-        bgClass: "bg-intro", showOverlay: false, bgText: "",
-        spidey: "images/spidey6.png", iron: null, side: "left"
-    },
-    {
-        speaker: "???",
-        color: "#555",
-        text: "...",
-        bgClass: "bg-intro", showOverlay: false, bgText: "?",
-        spidey: "images/spidey3.png", iron: null, side: "center"
+        text: "Cap? Did you touch the server rack? My suit is locking up! I can't move!",
+        bgClass: "bg-intro", bgText: "ERROR...",
+        spidey: "images/spidey6.png", iron: "images/iron2.png", side: "right"
     },
     {
         speaker: "DR. DOOM",
         color: "#006400",
-        text: "NAH. STARK IS GONE. THE SYMPOSIUM IS MINE.",
-        bgClass: "bg-intro", showOverlay: false, bgText: "DOOM\nIS HERE",
+        text: "SILENCE, AVENGERS. YOUR TECH IS FLAWED. THE SYMPOSIUM NOW BELONGS TO DOOM.",
+        bgClass: "bg-intro", bgText: "DOOM\nIS HERE",
         spidey: "images/spidey3.png", iron: null, side: "villain"
     },
     {
         speaker: "SPIDEY",
         color: "#E23636",
-        text: "GUYS! HELP! Assemble your team and REGISTER before he installs Linux on everything!",
-        bgClass: "bg-intro", showOverlay: false, bgText: "DOOM\nIS HERE",
+        text: "We need reinforcements! Students! REGISTER NOW and help us hack Doom out of the system!",
+        bgClass: "bg-intro", bgText: "DOOM\nIS HERE",
         spidey: "images/spidey6.png", iron: null, side: "left"
     }
 ];
@@ -387,3 +406,34 @@ function startCountdown() {
 
 // Start the timer
 startCountdown();
+// --- NEW: GENERATE FLOATING TECH PARTICLES ---
+function createTechParticles() {
+    const introSection = document.getElementById('game-intro');
+    if (!introSection) return;
+
+    // Create 30 particles
+    for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('tech-particle');
+        
+        // Randomize size (small squares)
+        const size = Math.random() * 10 + 5; // 5px to 15px
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Randomize position (across the screen)
+        particle.style.left = `${Math.random() * 100}%`;
+        
+        // Randomize speed (different float times)
+        const duration = Math.random() * 10 + 5; // 5s to 15s
+        particle.style.animationDuration = `${duration}s`;
+        
+        // Randomize delay (so they don't all start at once)
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+
+        introSection.appendChild(particle);
+    }
+}
+
+// Run this immediately
+createTechParticles();
