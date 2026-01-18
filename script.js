@@ -7,179 +7,179 @@ let introPlayed = false; // Tracks if the game start animation has happened
 let typingTimeout; // To stop typing if user clicks next quickly
 
 // --- FULL STORY SCRIPT ---
-// --- FULL STORY SCRIPT (FUNNY EDITION) ---
-// --- FULL STORY SCRIPT: THE CIVIL WAR DEBATE ---
+// --- FULL STORY SCRIPT: THE HAPPY HOGAN REJECTION ARC ---
 const story = [
-    // --- INTRO: IRON MAN'S VIEW ---
+    // --- INTRO: DEADPOOL & IRON MAN ---
     {
-        speaker: "SPIDEY",
-        color: "#E23636",
-        text: "Welcome to the Symposium! I'm your host, Spidey. Today we settle the debate: Tech vs. Tradition!",
+        speaker: "DEADPOOL",
+        color: "#800000", 
+        text: "WELCOME! I am your host, the Merc with a Mouth! I took over this Symposium to prove a point.",
         bgClass: "bg-intro", 
-        bgText: "WELCOME TO\nTECH SYMPOSIUM", 
-        spidey: "images/spidey1.png",
-        iron: "images/iron1.png", // Iron Man is here
+        bgText: "DEADPOOL\nHOSTING", 
+        spidey: "images/dp1.png", 
+        iron: "images/iron1.png", 
         side: "left"
     },
     {
         speaker: "IRON MAN",
         color: "#F5D033",
-        text: "It's not a debate. It's a roast. I have lasers and AI. Rogers has a frisbee.",
+        text: "Prove what point? That you can annoy me to death? Where is Peter?",
         bgClass: "bg-intro",   
-        bgText: "WELCOME TO\nTECH SYMPOSIUM",
-        spidey: "images/spidey1.png",
+        bgText: "DEADPOOL\nHOSTING",
+        spidey: "images/dp1.png",
         iron: "images/iron1.png",
         side: "right"
     },
 
-    // --- CAPTAIN AMERICA ENTERS (Use Cap's Image in the 'iron' slot) ---
+    // --- EVENT 1: PAPER PRESENTATION (vs IRON MAN) ---
     {
-        speaker: "CAPTAIN AMERICA",
-        color: "#3366CC", // Blue for Cap
-        text: "It's a shield, Stark. And it stands for discipline. Something this Symposium needs.",
-        bgClass: "bg-intro", 
-        bgText: "CHOOSE YOUR\nSIDE",
-        spidey: "images/spidey2.png",
-        iron: "images/cap1.png", // <--- PUT CAP IMAGE HERE
-        side: "right"
-    },
-    {
-        speaker: "SPIDEY",
-        color: "#E23636",
-        text: "Whoa! Cap is here! Okay, let's look at the events. Round 1: PAPER PRESENTATION.",
-        bgClass: "bg-intro", bgText: "EVENT 1:\nPAPER PRESENTATION",
-        spidey: "images/spidey2.png", iron: "images/cap1.png", side: "left"
-    },
-
-    // --- EVENT 1: PAPER PRESENTATION (Cap's Turn) ---
-    {
-        speaker: "CAPTAIN AMERICA",
-        color: "#3366CC",
-        text: "Good. Research requires patience. You can't just ask an AI to write your thesis, Tony.",
-        bgClass: "bg-intro", bgText: "EVENT 1:\nPAPER PRESENTATION",
-        spidey: "images/spidey3.png", iron: "images/cap1.png", side: "right"
-    },
-    {
-        speaker: "IRON MAN", // Iron Man swaps back in
-        color: "#F5D033",
-        text: "Patience is for people with slow Wi-Fi. I want to see holograms and quantum theories!",
-        bgClass: "bg-intro", bgText: "EVENT 1:\nPAPER PRESENTATION",
-        spidey: "images/spidey3.png", iron: "images/iron2.png", side: "right"
-    },
-
-    // --- EVENT 2: HACKATHON (Iron Man's Turn) ---
-    {
-        speaker: "SPIDEY",
-        color: "#E23636",
-        text: "Okay, settle down! Round 2: The HACKATHON. 24 hours of coding. Pure stamina.",
-        bgClass: "bg-intro", bgText: "EVENT 2:\nHACKATHON",
-        spidey: "images/spidey4.png", iron: "images/iron2.png", side: "left"
+        speaker: "DEADPOOL",
+        color: "#800000",
+        text: "Peter is fine. First Event: PAPER PRESENTATION! Which sounds way too smart for me.",
+        bgClass: "bg-intro", bgText: "EVENT 1:\nPAPER STUFF",
+        spidey: "images/dp1.png", iron: "images/iron1.png", side: "left"
     },
     {
         speaker: "IRON MAN",
         color: "#F5D033",
-        text: "My favorite. If your code isn't compiling in nanoseconds, are you even trying?",
-        bgClass: "bg-intro", bgText: "EVENT 2:\nHACKATHON",
-        spidey: "images/spidey4.png", iron: "images/iron3.png", side: "right"
-    },
-    {
-        speaker: "CAPTAIN AMERICA", // Cap swaps back in
-        color: "#3366CC",
-        text: "Endurance is key. It's not about speed, it's about not crashing when the pressure hits.",
-        bgClass: "bg-intro", bgText: "EVENT 2:\nHACKATHON",
-        spidey: "images/spidey4.png", iron: "images/cap1.png", side: "right"
+        text: "It is for geniuses. Innovators. People who actually read the manual. Unlike you.",
+        bgClass: "bg-intro", bgText: "EVENT 1:\nPAPER STUFF",
+        spidey: "images/dp1.png", iron: "images/iron2.png", side: "right"
     },
 
-    // --- EVENT 3: TECHNOPOLY (The Argument) ---
+    // --- EVENT 2: HACKATHON (vs CAPTAIN AMERICA) ---
     {
-        speaker: "SPIDEY",
-        color: "#E23636",
-        text: "Round 3: TECHNOPOLY! It's a business strategy game. Buying companies, making deals.",
-        bgClass: "bg-intro", bgText: "EVENT 3:\nTECHNOPOLY",
-        spidey: "images/spidey5.png", iron: "images/cap1.png", side: "left"
+        speaker: "DEADPOOL",
+        color: "#800000",
+        text: "Whatever. Next: HACKATHON! And here to judge is America's Grandpa, Steve Rogers!",
+        bgClass: "bg-intro", bgText: "EVENT 2:\nHACKATHON",
+        spidey: "images/dp1.png", iron: "images/cap1.png", side: "left"
     },
     {
         speaker: "CAPTAIN AMERICA",
         color: "#3366CC",
-        text: "Be careful. A monopoly is dangerous. You need fair competition and rules.",
-        bgClass: "bg-intro", bgText: "EVENT 3:\nTECHNOPOLY",
-        spidey: "images/spidey5.png", iron: "images/cap1.png", side: "right"
-    },
-    {
-        speaker: "IRON MAN",
-        color: "#F5D033",
-        text: "Oh please. I'd just buy the bank and rename it 'Starkopoly'. It's called winning, Cap.",
-        bgClass: "bg-intro", bgText: "EVENT 3:\nTECHNOPOLY",
-        spidey: "images/spidey2.png", iron: "images/iron3.png", side: "right"
+        text: "Programming requires discipline, son. 24 hours of focus. No distractions. And pull up your pants.",
+        bgClass: "bg-intro", bgText: "EVENT 2:\nHACKATHON",
+        spidey: "images/dp1.png", iron: "images/cap1.png", side: "right"
     },
 
-    // --- EVENT 4: TECHTRIO ---
+    // --- EVENT 3: TECHNOPOLY (vs THOR) ---
     {
-        speaker: "SPIDEY",
-        color: "#E23636",
-        text: "Let's move on... TECHTRIO! 3 events in 1. It forces you to be a versatile engineer.",
+        speaker: "DEADPOOL",
+        color: "#800000",
+        text: "Yes sir! Round 3: TECHNOPOLY. Strategy! Money! And... Thunder? Thor is here?",
+        bgClass: "bg-intro", bgText: "EVENT 3:\nTECHNOPOLY",
+        spidey: "images/dp1.png", iron: "images/thor1.png", side: "left"
+    },
+    {
+        speaker: "THOR",
+        color: "#FF3333", 
+        text: "I shall conquer this board game! I will buy all the tiny plastic houses! FOR ASGARD!",
+        bgClass: "bg-intro", bgText: "EVENT 3:\nTECHNOPOLY",
+        spidey: "images/dp1.png", iron: "images/thor1.png", side: "right"
+    },
+
+    // --- EVENT 4: TECHTRIO (vs WOLVERINE) ---
+    {
+        speaker: "DEADPOOL",
+        color: "#800000",
+        text: "Calm down, Sparkles. Next: TECHTRIO! 3-in-1. And speaking of combos... Logan! Wolverine!",
         bgClass: "bg-intro", bgText: "EVENT 4:\nTECHTRIO",
-        spidey: "images/spidey3.png", iron: "images/iron1.png", side: "left"
+        spidey: "images/dp1.png", iron: "images/wolverine1.png", side: "left"
     },
     {
-        speaker: "CAPTAIN AMERICA",
-        color: "#3366CC",
-        text: "I like this one. You need a balanced team. Soldiers, scientists, and... billionaires.",
+        speaker: "WOLVERINE",
+        color: "#FFD700", 
+        text: "I'm only here for the beer, Wade. If I have to fix a computer, I'm using my claws.",
         bgClass: "bg-intro", bgText: "EVENT 4:\nTECHTRIO",
-        spidey: "images/spidey3.png", iron: "images/cap1.png", side: "right"
+        spidey: "images/dp1.png", iron: "images/wolverine1.png", side: "right"
     },
 
-    // --- TRANSPORT ---
+    // --- TRANSPORT (vs DR. STRANGE) ---
     {
-        speaker: "SPIDEY",
-        color: "#E23636",
-        text: "And for logistics: BUS ROUTES! We cover the whole city so everyone can attend.",
+        speaker: "DEADPOOL",
+        color: "#800000",
+        text: "Classic Logan. Finally: BUS ROUTES. Dr. Strange, can you magic the students here?",
         bgClass: "bg-intro", bgText: "TRANSPORT:\nAVAILABLE",
-        spidey: "images/spidey3.png", iron: "images/cap1.png", side: "left"
+        spidey: "images/dp1.png", iron: "images/strange1.png", side: "left"
     },
     {
-        speaker: "CAPTAIN AMERICA",
-        color: "#3366CC",
-        text: "Good work, son. No soldier left behind. Accessibility is a priority.",
+        speaker: "DR. STRANGE",
+        color: "#800080",
+        text: "The mystic arts are not for commuting, Wade. The buses are efficient enough. Use them.",
         bgClass: "bg-intro", bgText: "TRANSPORT:\nAVAILABLE",
-        spidey: "images/spidey2.png", iron: "images/cap1.png", side: "right"
+        spidey: "images/dp1.png", iron: "images/strange1.png", side: "right"
     },
+
+    // --- THE VENT (DEADPOOL'S REAL MOTIVATION) ---
+    {
+        speaker: "DEADPOOL",
+        color: "#800000",
+        text: "Fine! Everything is organized! See, Stark? I can run a team! Happy Hogan was WRONG!",
+        bgClass: "bg-intro", bgText: "HAPPY WAS\nWRONG",
+        spidey: "images/dp1.png", iron: "images/iron2.png", side: "left"
+    },
+    {
+        speaker: "DEADPOOL",
+        color: "#800000",
+        text: "Happy told me I wasn't 'Avenger Material'. That's why I wasn't fighting Thanos! He ghosted me!",
+        bgClass: "bg-intro", bgText: "HAPPY WAS\nWRONG",
+        spidey: "images/dp1.png", iron: "images/iron2.png", side: "left"
+    },
+    
+    // --- THE CLIMAX (DOOM ARRIVES) ---
     {
         speaker: "IRON MAN",
         color: "#F5D033",
-        text: "I suppose. Not everyone has a suit. Alright, I declare a truce. The event looks solid.",
-        bgClass: "bg-intro", bgText: "TRANSPORT:\nAVAILABLE",
-        spidey: "images/spidey2.png", iron: "images/iron2.png", side: "right"
-    },
-
-    // --- THE TWIST (Doom) ---
-    {
-        speaker: "SPIDEY",
-        color: "#E23636",
-        text: "Awesome! Civil War is over! Now let's just— wait, why are the screens flickering green?",
-        bgClass: "bg-intro", bgText: "CONNECTING...",
-        spidey: "images/spidey6.png", iron: "images/iron2.png", side: "left"
-    },
-    {
-        speaker: "IRON MAN",
-        color: "#F5D033",
-        text: "Cap? Did you touch the server rack? My suit is locking up! I can't move!",
-        bgClass: "bg-intro", bgText: "ERROR...",
-        spidey: "images/spidey6.png", iron: "images/iron2.png", side: "right"
+        text: "Wait... Wade, stop crying. The system is locking up. Someone is overriding the protocol.",
+        bgClass: "bg-intro", bgText: "SYSTEM\nFAILURE",
+        spidey: "images/dp1.png", iron: "images/iron2.png", side: "right"
     },
     {
         speaker: "DR. DOOM",
         color: "#006400",
-        text: "SILENCE, AVENGERS. YOUR TECH IS FLAWED. THE SYMPOSIUM NOW BELONGS TO DOOM.",
+        text: "SILENCE, FOOLS. STARK'S SECURITY IS PATHETIC. I CONQUER THIS SYMPOSIUM.",
         bgClass: "bg-intro", bgText: "DOOM\nIS HERE",
-        spidey: "images/spidey3.png", iron: null, side: "villain"
+        spidey: "images/dp1.png", iron: null, side: "villain"
+    },
+    
+    // --- THE CHALLENGE ---
+    {
+        speaker: "IRON MAN",
+        color: "#F5D033",
+        text: "Great. He hacked the mainframe. I can't reboot it alone. Wade, this is your chance.",
+        bgClass: "bg-intro", bgText: "ASSEMBLE",
+        spidey: "images/dp1.png", iron: "images/iron2.png", side: "right"
     },
     {
-        speaker: "SPIDEY",
-        color: "#E23636",
-        text: "We need reinforcements! Students! REGISTER NOW and help us hack Doom out of the system!",
-        bgClass: "bg-intro", bgText: "DOOM\nIS HERE",
-        spidey: "images/spidey6.png", iron: null, side: "left"
+        speaker: "DEADPOOL",
+        color: "#800000",
+        text: "My chance? To fight Doom? With what? My charm?",
+        bgClass: "bg-intro", bgText: "ASSEMBLE",
+        spidey: "images/dp1.png", iron: "images/iron2.png", side: "left"
+    },
+    {
+        speaker: "IRON MAN",
+        color: "#F5D033",
+        text: "To prove Happy wrong. If you want to be an Avenger, you need a team. A smart team. Find them.",
+        bgClass: "bg-intro", bgText: "ASSEMBLE",
+        spidey: "images/dp1.png", iron: "images/iron2.png", side: "right"
+    },
+    
+    // --- THE CALL TO ACTION ---
+    {
+        speaker: "DEADPOOL",
+        color: "#800000",
+        text: "A smart team? *Looks at screen* HEY YOU! Yeah, you with the mouse! I choose YOU!",
+        bgClass: "bg-intro", bgText: "I CHOOSE\nYOU",
+        spidey: "images/dp1.png", iron: "images/iron2.png", side: "left"
+    },
+    {
+        speaker: "DEADPOOL",
+        color: "#800000",
+        text: "REGISTER NOW! Help me hack Doom! If we win, I send a selfie to Happy! GO GO GO!",
+        bgClass: "bg-intro", bgText: "REGISTER\nNOW",
+        spidey: "images/dp1.png", iron: "images/iron2.png", side: "left"
     }
 ];
 
