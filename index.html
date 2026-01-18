@@ -3,16 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Symposium: Civil War of Words</title>
+    <title>CHIPCOMM STORY</title>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+   <div id="game-intro">
+    <div class="rain-container"></div>
+    
+    <div class="vignette-overlay"></div>
+
+    <div class="intro-header dark-mode">
+        <img src="images/college.png" class="menu-logo" alt="College Logo">
+        <img src="images/symp.png" class="menu-logo" alt="Symposium Logo">
+        <img src="images/29years.png" class="menu-logo" alt="29 Years">
+        
+    </div>
+
+    <div class="intro-content">
+        <h1 class="game-title neon-text">CHIPCOMM<br>STORY</h1>
+        <p class="game-subtitle">CIVIL WAR OF WORDS</p>
+    </div>
+
+    <img src="images/spidey1.png" class="intro-char char-left" alt="Spidey">
+    <img src="images/iron1.png" class="intro-char char-right" alt="Iron Man">
+
+    <div class="intro-footer">
+        <div class="menu-timer-box">
+            <span>EVENT STARTS IN:</span>
+            <div id="intro-timer">LOADING...</div>
+        </div>
+        <button id="start-story-btn" onclick="startGame()">Start STORY &#9658;</button>
+        <br>
+        <a href="#" onclick="openRegisterLink()" class="intro-register-link">JOIN THE RESISTANCE</a>
+    </div>
+</div>
     <div id="comic-scene" class="bg-base bg-intro">
         
         <div id="overlay-area" style="display: none;">
             </div>
+
         <div class="cinema-border border-top"></div>
         <div class="cinema-border border-bottom"></div>
 

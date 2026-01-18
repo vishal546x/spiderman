@@ -1,4 +1,6 @@
-/* --- 1. CORE SETTINGS --- */
+/* ========================================= */
+/* 1. CORE SETTINGS                          */
+/* ========================================= */
 body {
     margin: 0;
     overflow: hidden;
@@ -15,62 +17,320 @@ body {
     height: 100%;
     position: relative;
     overflow: hidden;
-    transition: background-image 0.5s ease-in-out; /* Smooth fade effect */
+    transition: background-image 0.5s ease-in-out; 
+}
+/* ========================================= */
+/* ANIMATED BACKGROUND PARTICLES             */
+/* ========================================= */
+
+/* The Particle Style */
+.tech-particle {
+    position: absolute;
+    bottom: -20px; /* Start below screen */
+    background: rgba(255, 255, 255, 0.05); /* Very faint white */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+    z-index: -1; /* Stay BEHIND the text/logos */
+    animation: floatUp linear infinite;
+}
+
+/* The Floating Animation */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg); /* Move way up and spin */
+        opacity: 0;
+    }
+}
+
+/* Ensure the Intro Container allows absolute items inside it */
+#game-intro {
+    overflow: hidden; /* Prevents scrollbars if particles go weird */
+    position: fixed; /* (Confirming this is set) */
 }
 
 /* ========================================= */
-/* FLEXIBLE BACKGROUND IMAGE SYSTEM          */
+/* 2. GAME INTRO SCREEN (START PAGE)         */
+/* ========================================= */
+/* ========================================= */
+/* NEW: INTRO MENU SCREEN STYLES             */
+/* ========================================= */
+/* ========================================= */
+/* DARK COMIC INTRO THEME                    */
 /* ========================================= */
 
-/* 1. The Base Class (Apply this to #comic-scene always) */
+#game-intro {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    /* Dark Rainy City Background Color */
+    background: linear-gradient(to bottom, #050505, #1a1a1a);
+    z-index: 9999; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    transition: opacity 1s ease-in-out;
+}
+
+/* --- VIGNETTE (Dark Edges) --- */
+.vignette-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, transparent 40%, #000 90%);
+    z-index: 2; /* On top of background, below text */
+    pointer-events: none;
+}
+
+/* --- RAIN ANIMATION --- */
+.rain-container {
+    position: absolute;
+    width: 100%; height: 100%;
+    z-index: 1;
+    background-image: url('https://i.imgur.com/71X1s5G.png'); /* Simple rain texture */
+    animation: rainFall 0.5s linear infinite;
+    opacity: 0.3;
+}
+@keyframes rainFall {
+    from { background-position: 0 0; }
+    to { background-position: -20px 600px; }
+}
+
+/* --- LOGOS (Dimmed to fit the mood) --- */
+.intro-header {
+    z-index: 10;
+    width: 100%; max-width: 1200px;
+    display: flex; justify-content: space-between;
+    padding: 20px 40px;
+    filter: grayscale(80%) brightness(0.8); /* Muted colors */
+    transition: filter 0.5s;
+}
+.intro-header:hover { filter: grayscale(0%) brightness(1); } /* Light up on hover */
+
+.menu-logo { height: 100px; width: auto; object-fit: contain; }
+
+/* --- TITLE (Neon Glow) --- */
+.intro-content { z-index: 10; text-align: center; margin-top: -20px; }
+
+.game-title.neon-text {
+    font-family: 'Bangers', cursive;
+    font-size: 7rem;
+    line-height: 0.9;
+    color: #fff;
+    /* Red Neon Glow */
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #e60000,
+        0 0 40px #e60000,
+        0 0 80px #e60000;
+    animation: flicker 4s infinite;
+}
+
+.game-subtitle {
+    color: #ccc; letter-spacing: 6px; font-family: 'Comic Neue', cursive;
+}
+
+/* --- SILHOUETTE CHARACTERS --- */
+.intro-char {
+    position: absolute;
+    bottom: 0;
+    height: 70vh; /* Big and imposing */
+    z-index: 5; /* Behind text, in front of rain */
+    filter: brightness(0.1) drop-shadow(0 0 10px rgba(255,255,255,0.1)); /* Almost black */
+    transition: filter 0.5s;
+}
+.char-left { left: -5%; transform: scaleX(-1); /* Flip if needed */ }
+.char-right { right: -5%; }
+
+/* Hover Effect: Reveal them slightly */
+.intro-char:hover { filter: brightness(0.8); }
+
+/* --- FOOTER & BUTTONS --- */
+.intro-footer {
+    z-index: 10; text-align: center; padding-bottom: 40px;
+    width: 100%;
+}
+
+#intro-timer {
+    color: #e60000; font-family: 'Courier New', monospace;
+    font-size: 2rem; font-weight: bold;
+    text-shadow: 0 0 10px red;
+}
+
+#start-story-btn {
+    background: transparent;
+    border: 3px solid #e60000;
+    color: #fff;
+    font-family: 'Bangers', cursive;
+    font-size: 2rem;
+    padding: 15px 50px;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px #e60000;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+#start-story-btn:hover {
+    background: #e60000;
+    box-shadow: 0 0 40px #e60000;
+}
+
+.intro-register-link {
+    color: #888; text-decoration: none; margin-top: 15px; display: block;
+    font-family: 'Comic Neue', cursive; letter-spacing: 1px;
+}
+.intro-register-link:hover { color: #fff; text-shadow: 0 0 5px white; }
+
+/* --- ANIMATIONS --- */
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #e60000, 0 0 40px #e60000, 0 0 80px #e60000;
+    }
+    20%, 24%, 55% {       
+        text-shadow: none; opacity: 0.8;
+    }
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .game-title.neon-text { font-size: 3.5rem; }
+    .intro-char { height: 40vh; opacity: 0.5; } /* Fade them out on mobile so text is readable */
+    .menu-logo { height: 50px; }
+    .intro-header { padding: 15px; }
+}
+
+/* Helper to hide */
+.hidden-intro { opacity: 0; pointer-events: none; }
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+   /* --- UPDATE THIS SECTION INSIDE @media (max-width: 768px) --- */
+
+    /* 1. INTRO HEADER (LOGOS) */
+    .intro-header {
+        justify-content: space-between; /* Spread them out */
+        padding: 15px 5px; /* Less padding so logos have more room */
+        gap: 5px; /* Smaller gap between logos */
+    }
+
+    .menu-logo { 
+        height: 85px; /* INCREASED: Was small, now much bigger */
+        max-width: 32%; /* Ensures all 3 fit on one line */
+        object-fit: contain;
+    }
+
+    /* 2. INTRO TITLE */
+    .game-title { 
+        font-size: 4rem; 
+        margin-top: 10px;
+    }
+
+    /* 3. TIMER (FIXED SIZE) */
+    /* --- FIX TIMER WRAPPING ON MOBILE --- */
+    #intro-timer { 
+        font-size: 1.4rem; /* Reduced from 1.8rem to fit on one line */
+        margin-top: 5px;
+        white-space: nowrap; /* Forces text to stay on one line */
+    }
+    
+    /* Optional: If it still wraps, we can stack the logos better */
+    .intro-header {
+        padding: 10px 0; /* Remove side padding to give max width */
+    }
+    
+    .menu-timer-box span {
+        font-size: 0.8rem; /* "Event Starts In" text size */
+    }
+
+    /* 4. BUTTONS */
+    #start-story-btn { 
+        font-size: 1.4rem; 
+        padding: 12px 30px; 
+    }
+}
+
+/* ========================================= */
+/* PART E: INTRO ANIMATIONS (FIXED)          */
+/* ========================================= */
+
+/* Simple Fade In */
+.fade-in {
+    animation: fadeInAnim 1s ease forwards;
+}
+
+/* Slide Up & Fade In (For Characters) */
+.slide-up-fade {
+    animation: slideUpAnim 0.8s ease-out forwards;
+}
+
+/* Pop In (For Chat Bubble) */
+.pop-in {
+    /* Uses the fixed keyframe below */
+    animation: popInAnim 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Keyframes */
+@keyframes fadeInAnim {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUpAnim {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- FIX: REMOVED translateX(-50%) --- */
+/* The bubble is already centered by the container, so we only need to Scale it */
+@keyframes popInAnim {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Blinking Cursor for Typewriter */
+.cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+
+/* ========================================= */
+/* 4. BACKGROUND IMAGE SYSTEM                */
+/* ========================================= */
 .bg-base {
     background-color: #000;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
-    /* Adds a slight dark tint so characters stand out */
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.3); 
 }
 
-/* 2. Your Image Classes (Add as many as you want!) */
-
-/* The Intro Background */
-.bg-intro {
-    background-image: url('images/si.png'); 
-}
-
-/* Example: Future Backgrounds (Just create the file and uncomment) */
-/* .bg-lab { background-image: url('images/lab.jpg'); }
-.bg-city { background-image: url('images/city.jpg'); }
-*/
+/* Image Classes */
+.bg-intro { background-image: url('images/si.png'); }
+.bg-lab { background-image: url('images/paper.png'); }
+.bg-events { background-image: url('images/events.png'); }
 
 
 /* ========================================= */
-/* FUTURE OVERLAY BOX STYLES                 */
+/* 5. LAYOUT & CHARACTERS (Global/Laptop)    */
 /* ========================================= */
 #overlay-area {
-    position: absolute;
-    top: 50%; left: 50%;
+    position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
-    height: 60%;
-    z-index: 10; /* Behind characters (z=5) but above bg */
-    pointer-events: none; /* Let clicks pass through */
+    width: 80%; height: 60%;
+    z-index: 10; pointer-events: none;
 }
-
-/* Example style for a simple box you might add later */
-.simple-box {
-    background: white;
-    border: 4px solid black;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 10px 10px 0 rgba(0,0,0,0.5);
-}
-
-
-/* ========================================= */
-/* EXISTING LAYOUT STYLES (Unchanged)        */
-/* ========================================= */
 
 .cinema-border {
     position: absolute; left: 0; width: 100%; height: 8vh;
@@ -100,16 +360,36 @@ body {
 #iron-img { right: -20px; }
 .character.inactive { filter: grayscale(80%) brightness(40%); transform: scale(0.95); }
 
+
+/* ========================================= */
+/* 6. DIALOGUE & CONTROLS (Strict Centering) */
+/* ========================================= */
 .dialogue-container {
-    position: absolute; bottom: 10vh; left: 50%;
-    transform: translateX(-50%); width: 80%; max-width: 700px;
-    z-index: 20; display: flex; flex-direction: column; align-items: center;
+    position: absolute; 
+    bottom: 10vh; 
+    
+    /* STRICT CENTERING */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 60%; 
+    max-width: 800px;
+    z-index: 20; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
 }
 
 .bubble {
-    background: #fff; border: 3px solid #000; border-radius: 10px;
-    padding: 15px 25px; position: relative;
-    box-shadow: 0px 5px 15px rgba(0,0,0,0.5); text-align: center; width: 100%;
+    background: #fff; 
+    border: 3px solid #000; 
+    border-radius: 10px;
+    padding: 20px 30px; 
+    position: relative;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.5); 
+    text-align: center; 
+    width: 100%; 
+    box-sizing: border-box;
 }
 .bubble::after { content: ''; position: absolute; bottom: -10px; border-width: 10px 10px 0; border-style: solid; display: block; width: 0; }
 .bubble.speaking-left::after { left: 20%; border-color: #fff transparent transparent transparent; }
@@ -126,8 +406,17 @@ body {
 .text-content { font-family: 'Comic Neue', cursive; font-size: 1.3rem; line-height: 1.3; }
 
 .controls {
-    position: absolute; bottom: 1.5vh; left: 50%;
-    transform: translateX(-50%); z-index: 30; display: flex; gap: 15px;
+    position: absolute; 
+    bottom: 2vh; 
+    
+    /* STRICT CENTERING */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    z-index: 30; 
+    display: flex; 
+    gap: 15px;
+    justify-content: center;
 }
 button {
     font-family: 'Bangers', cursive; font-size: 1rem; padding: 8px 20px;
@@ -137,78 +426,164 @@ button {
 }
 button:hover { transform: translateY(-2px); background: #fff; }
 #register-btn { background-color: #ff3333; color: white; display: none; animation: pulse 1s infinite; }
-@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-/* Mobile View */
-/* ========================================= */
-/* PART D: MOBILE VIEW ADJUSTMENTS           */
-/* ========================================= */
 
+/* ========================================= */
+/* 7. MOBILE VIEW (Combined & Cleaned)       */
+/* ========================================= */
 @media (max-width: 768px) {
+    /* Intro Screen Mobile */
+    .game-title { font-size: 3.5rem; }
+    .intro-content { padding: 20px; width: 80%; }
+    #start-story-btn { font-size: 1.5rem; padding: 10px 30px; }
+
+    /* Scene Mobile */
+    .bg-lab { background-image: url('images/paper-mobile.png') !important; background-position: center top !important; }
     #bg-headline { font-size: 2.5rem; top: 25%; }
 
-    /* 1. THICK BORDER (Covers legs/hips) */
-    .cinema-border {
-        height: 15vh; /* Thick black bar */
-        z-index: 10; /* Sits ON TOP of characters */
-    }
+    /* Thick Border */
+    .cinema-border { height: 15vh; z-index: 10; }
 
-    /* 2. MOVE CHARACTERS DOWN & MAKE TALLER */
+    /* Characters (Behind Border) */
     .character {
-        /* FIX: Move to 0 so they stand at the very bottom behind the border */
         bottom: 0; 
-        /* FIX: Make taller so they peek over the text box */
         height: 65vh; 
         max-width: 60vw; 
-        z-index: 5; /* Sits BEHIND border and text box */
+        z-index: 5; 
     }
-    
-    /* Adjust positions slightly to frame them better */
     #spidey-img { left: -40px; }
     #iron-img { right: -40px; }
 
-    /* 3. DIALOGUE BOX POSITION */
+    /* Dialogue (Strict Centering) */
     .dialogue-container {
-        /* Sit just above the black border */
         bottom: 16vh; 
-        width: 90%;
-        z-index: 20; /* Sits ON TOP of everything */
+        width: 90%; 
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 20;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
-    .bubble { 
-        padding: 8px 12px; 
-        border: 2px solid #000; 
-    }
+    .bubble { padding: 8px 12px; border: 2px solid #000; width: 100%; }
     .text-content { font-size: 0.9rem; line-height: 1.2; }
     .speaker-name { font-size: 0.75rem; padding: 2px 6px; margin-bottom: -8px; }
 
-    /* 4. CONTROLS POSITION */
+    /* Controls (Strict Centering) */
     .controls { 
-        bottom: 4vh; /* Centered inside the black border */
+        bottom: 4vh; 
+        width: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        gap: 10px;
         z-index: 30;
     }
     button { padding: 5px 15px; font-size: 0.9rem; }
+}
+/* ========================================= */
+/* PART F: CHAT BOUNCE ANIMATION             */
+/* ========================================= */
 
-    /* 5. COMIC GRID ADJUSTMENTS */
-    #special-intro-bg {
-        width: 90vw;
-        height: 50vh; 
-        top: 35%; 
-        padding: 5px;
-        overflow: hidden; 
-    }
-    .comic-grid { 
-        grid-template-columns: 1fr 1fr; 
-        grid-template-rows: 1fr 1fr 1fr; 
-    }
-    .span-row { grid-column: span 2; }
-    .deco-cloud, .link-bubble::after, .speed-pattern { display: none; }
-    .panel-logo { max-height: 40px; }
-    .c-panel { min-height: 80px; }
-    .comic-box, .comic-burst, .comic-sticker, .comic-speech-bubble { 
-        font-size: 0.8rem; 
-        padding: 4px; 
-        border: 2px solid #000;
-    }
-    .date-sticker { width: 70px; height: 70px; font-size: 0.8rem; bottom: 5px; left: 5px; }
-    .link-bubble { bottom: 5px; right: 5px; font-size: 0.7rem; }
+.bounce-chat {
+    animation: chatBounce 0.3s ease-out;
+    transform-origin: center bottom; /* Bounces from the bottom up */
+}
+
+@keyframes chatBounce {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    50% { transform: scale(1.02); opacity: 1; }
+    100% { transform: scale(1); }
+}
+/* ========================================= */
+/* PART G: ADVANCED INTRO ANIMATIONS         */
+/* ========================================= */
+
+/* --- 1. LOGOS (Slide Down from Top) --- */
+.intro-header {
+    animation: slideDownBounce 1s ease-out forwards;
+}
+
+/* --- 2. GAME TITLE (Elastic Zoom + Floating) --- */
+.game-title {
+    opacity: 0; /* Hidden initially */
+    animation: 
+        zoomInElastic 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.5s, /* Enters at 0.5s */
+        floatIdle 3s ease-in-out infinite 1.5s; /* Starts floating after entering */
+}
+
+/* --- 3. SUBTITLE (Fade In) --- */
+.game-subtitle {
+    opacity: 0;
+    animation: fadeInSimple 1s ease-out forwards 1s; /* Enters at 1s */
+}
+
+/* --- 4. TIMER (Slide Up) --- */
+.menu-timer-box {
+    opacity: 0;
+    animation: slideUpFade 0.8s ease-out forwards 1.2s; /* Enters at 1.2s */
+}
+
+/* --- 5. BUTTON (Pop In) --- */
+#start-story-btn {
+    opacity: 0; /* Hidden initially */
+    /* Combines the Pop In entrance AND the Pulse loop */
+    animation: 
+        zoomInElastic 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 1.5s, 
+        pulseStart 1.5s infinite 2.3s; /* Pulse starts after entrance */
+}
+
+/* --- 6. REGISTER LINK (Shimmering Attention) --- */
+.intro-register-link {
+    opacity: 0;
+    position: relative;
+    display: inline-block;
+    animation: slideUpFade 0.8s ease-out forwards 1.8s; /* Enters last */
+}
+
+/* Make the link glow gold continuously */
+.intro-register-link {
+    animation: goldGlow 2s infinite alternate 2s; /* Continuous Glow */
+}
+
+
+/* ========================================= */
+/* KEYFRAMES (The Math behind the moves)     */
+/* ========================================= */
+
+/* 1. Slide Down with a little bounce */
+@keyframes slideDownBounce {
+    0% { transform: translateY(-100px); opacity: 0; }
+    60% { transform: translateY(10px); opacity: 1; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* 2. Elastic Zoom (Used for Title & Button) */
+@keyframes zoomInElastic {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* 3. Simple Fade In */
+@keyframes fadeInSimple {
+    to { opacity: 1; }
+}
+
+/* 4. Slide Up from bottom */
+@keyframes slideUpFade {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* 5. Floating (Idle movement for Title) */
+@keyframes floatIdle {
+    0%, 100% { transform: translateY(0) rotate(-2deg); } /* Keep the tilt */
+    50% { transform: translateY(-10px) rotate(-2deg); }
+}
+
+/* 6. Gold Glow (For Register Link) */
+@keyframes goldGlow {
+    0% { text-shadow: 0 0 5px #F5D033; transform: scale(1); }
+    100% { text-shadow: 0 0 20px #F5D033, 0 0 10px orange; transform: scale(1.05); }
 }
