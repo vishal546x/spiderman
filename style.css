@@ -608,3 +608,124 @@ button:hover { transform: translateY(-2px); background: #fff; }
     0% { text-shadow: 0 0 5px #F5D033; transform: scale(1); }
     100% { text-shadow: 0 0 20px #F5D033, 0 0 10px orange; transform: scale(1.05); }
 }
+/* ========================================= */
+/* INTERACTIVE NEURO-THEME                   */
+/* ========================================= */
+
+.interactive-theme {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #0b0d10; /* Deep Dark Blue/Black */
+    z-index: 9999;
+    overflow: hidden;
+    perspective: 1000px; /* Essential for 3D Tilt */
+    display: flex; justify-content: center; align-items: center;
+}
+
+/* 1. THE CANVAS (Background Physics) */
+#neuro-canvas {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1; /* Behind everything */
+}
+
+/* 2. THE 3D TILT WRAPPER */
+.tilt-wrapper {
+    position: relative;
+    z-index: 10;
+    width: 90%; max-width: 1200px;
+    height: 90%;
+    display: flex; flex-direction: column;
+    justify-content: space-between; align-items: center;
+    transform-style: preserve-3d; /* Allows children to pop out */
+    transition: transform 0.1s ease-out; /* Smooth follow */
+}
+
+/* 3. FLOATING CHARACTERS (Pop out of screen) */
+.char-float-container {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) translateZ(50px); /* Pushes them forward 50px */
+    width: 100%; height: 100%;
+    pointer-events: none;
+}
+.float-char {
+    position: absolute; bottom: 0; height: 75vh;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+    transition: transform 0.2s;
+}
+.char-left { left: 0; transform: rotate(-5deg); }
+.char-right { right: 0; transform: rotate(5deg); }
+
+/* 4. TITLE GLITCH EFFECT */
+.glitch-wrapper { position: relative; transform: translateZ(80px); /* Pop out more */ }
+
+.game-title {
+    font-family: 'Orbitron', sans-serif; /* Use Tech font if available */
+    font-size: 6rem; color: #fff;
+    text-shadow: 0 0 10px #00f3ff;
+    position: relative;
+}
+
+/* Creating the glitch layers */
+.game-title::before, .game-title::after {
+    content: attr(data-text);
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: #0b0d10;
+}
+.game-title::before {
+    left: 2px; text-shadow: -1px 0 red;
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+}
+.game-title::after {
+    left: -2px; text-shadow: -1px 0 blue;
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+/* 5. MAGNETIC BUTTON */
+.magnetic-btn {
+    position: relative;
+    padding: 20px 60px;
+    background: transparent;
+    border: 2px solid #00f3ff;
+    color: #00f3ff;
+    font-size: 1.5rem; font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    overflow: hidden;
+    transform: translateZ(100px); /* Closest to user */
+    transition: all 0.3s;
+}
+.magnetic-btn:hover {
+    background: #00f3ff; color: #000;
+    box-shadow: 0 0 50px #00f3ff;
+}
+/* The Glow Effect inside the button */
+.btn-glow {
+    position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 60%);
+    opacity: 0; transform: scale(0.5);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+}
+.magnetic-btn:hover .btn-glow { opacity: 0.2; transform: scale(1); }
+
+
+/* GLITCH ANIMATIONS */
+@keyframes glitch-anim-1 {
+  0% { clip: rect(20px, 9999px, 10px, 0); }
+  100% { clip: rect(80px, 9999px, 100px, 0); }
+}
+@keyframes glitch-anim-2 {
+  0% { clip: rect(100px, 9999px, 120px, 0); }
+  100% { clip: rect(10px, 9999px, 50px, 0); }
+}
+
+/* MOBILE FIXES */
+@media (max-width: 768px) {
+    .game-title { font-size: 3rem; }
+    .float-char { height: 40vh; opacity: 0.8; }
+    .char-left { left: -20px; } 
+    .char-right { right: -20px; }
+}
