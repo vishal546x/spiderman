@@ -18,7 +18,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "ATTENDANCE\nLOW?",
     spidey: "images/spidey1.png",
-    iron: "images/thor1.png",
+    //iron: "images/thor1.png",
     side: "left"
   },
   {
@@ -28,7 +28,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "UNPAID\nINTERN",
     spidey: "images/spidey1.png",
-    iron: "images/thor1.png",
+   // iron: "images/thor1.png",
     side: "left"
   },
 
@@ -50,7 +50,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "WHAT IS\nPOLY?",
     spidey: "images/spidey1.png",
-    iron: "images/thor1.png",
+    iron: "images/thor2.png",
     side: "right"
   },
 
@@ -72,7 +72,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "PARENTAL\nCONTROL",
     spidey: "images/spidey2.png",
-    iron: "images/thor1.png",
+    iron: "images/thor3.png",
     side: "right"
   },
 
@@ -84,7 +84,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "EVENT 1:\nPAPER",
     spidey: "images/spidey1.png",
-    iron: "images/daredevil1.png",
+    //iron: "images/daredevil.png",
     side: "left"
   },
   {
@@ -94,7 +94,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "HEART\nRATE",
     spidey: "images/spidey1.png",
-    iron: "images/daredevil1.png",
+    iron: "images/daredevil.png",
     side: "right"
   },
   {
@@ -104,7 +104,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "OOPS\nSORRY",
     spidey: "images/spidey1.png",
-    iron: "images/daredevil1.png",
+    iron: "images/daredevil.png",
     side: "left"
   },
 
@@ -116,7 +116,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "EVENT 2:\nHACKATHON",
     spidey: "images/spidey1.png",
-    iron: "images/cap1.png",
+    //iron: "images/cap.png",
     side: "left"
   },
   {
@@ -126,7 +126,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "DEBUG\nLIBERTY",
     spidey: "images/spidey1.png",
-    iron: "images/cap1.png",
+    iron: "images/cap.png",
     side: "right"
   },
   {
@@ -136,7 +136,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "JUST\nCOFFEE",
     spidey: "images/spidey1.png",
-    iron: "images/cap1.png",
+    iron: "images/cap.png",
     side: "left"
   },
 
@@ -148,7 +148,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "EVENT 3:\nTECHNOPOLY",
     spidey: "images/spidey1.png",
-    iron: "images/iron1.png",
+    //iron: "images/iron1.png",
     side: "left"
   },
   {
@@ -168,7 +168,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "TABLE\nFLIP",
     spidey: "images/spidey1.png",
-    iron: "images/thor1.png",
+    iron: "images/thor4.png",
     side: "right"
   },
 
@@ -180,7 +180,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "EVENT 4:\nTECH TRIO",
     spidey: "images/spidey1.png",
-    iron: "images/moon1.png",
+   // iron: "images/moon.png",
     side: "left"
   },
   {
@@ -190,7 +190,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "WHO\nIS IT?",
     spidey: "images/spidey2.png",
-    iron: "images/moon1.png",
+    iron: "images/moon.png",
     side: "left"
   },
   {
@@ -200,7 +200,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "PERFECT\nTEAM",
     spidey: "images/spidey2.png",
-    iron: "images/moon1.png",
+    iron: "images/moon.png",
     side: "right"
   },
   {
@@ -210,7 +210,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "NO\nCHEATING",
     spidey: "images/spidey2.png",
-    iron: "images/moon1.png",
+    iron: "images/moon.png",
     side: "left"
   },
 
@@ -222,7 +222,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "NO\nPORTALS",
     spidey: "images/spidey1.png",
-    iron: "images/strange1.png",
+    iron: "images/doc.png",
     side: "right"
   },
 
@@ -234,7 +234,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "BUS\nONLY",
     spidey: "images/spidey1.png",
-    iron: "images/wong1.png",
+    iron: "images/wong.png",
     side: "right"
   },
 
@@ -242,7 +242,7 @@ const story = [
   {
     speaker: "NED",
     color: "#FF8C00",
-    text: "Guys, just take the bus. I accidentally portaled my homework into a volcano once.",
+    text: "Guys, just take the bus. I accidentally teleported my homework into a volcano once.",
     bgClass: "bg-intro",
     bgText: "GRANDMA\nGONE",
     spidey: "images/spidey1.png",
@@ -266,7 +266,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "SHE IS\nFINE",
     spidey: "images/spidey2.png",
-    iron: "images/ned1.png",
+    iron: "images/ned2.png",
     side: "right"
   },
   {
@@ -276,7 +276,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "NORMAL\nLIFE",
     spidey: "images/spidey2.png",
-    iron: "images/ned1.png",
+    iron: "images/ned2.png",
     side: "left"
   },
 
@@ -290,7 +290,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "NON\nTECH",
     spidey: "images/spidey1.png",
-    iron: "images/thor1.png",
+    //iron: "images/thor1.png",
     side: "left"
   },
   {
@@ -300,7 +300,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "TOP\nSECRET",
     spidey: "images/spidey1.png",
-    iron: "images/thor1.png",
+   // iron: "images/thor1.png",
     side: "left"
   },
   {
@@ -310,7 +310,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "LEAKING\nIT...",
     spidey: "images/spidey1.png",
-    iron: "images/thor1.png",
+   // iron: "images/thor1.png",
     side: "left"
   },
 
@@ -322,7 +322,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "SIGNAL\nLOST",
     spidey: "images/spidey2.png",
-    iron: null,
+    //iron: null,
     side: "center"
   },
   {
@@ -332,7 +332,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "NO\nSPOILERS",
     spidey: "images/spidey2.png",
-    iron: null,
+   // iron: null,
     side: "villain"
   },
   {
@@ -342,7 +342,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "EVENT\nDELETED",
     spidey: "images/spidey2.png",
-    iron: null,
+   // iron: null,
     side: "villain"
   },
 
@@ -354,7 +354,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "NOT\nCOOL",
     spidey: "images/spidey3.png",
-    iron: null,
+    //iron: null,
     side: "left"
   },
   {
@@ -364,7 +364,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "SYSTEM\nLOCKED",
     spidey: "images/spidey3.png",
-    iron: null,
+    //iron: null,
     side: "left"
   },
   {
@@ -374,7 +374,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "JOIN\nUS",
     spidey: "images/spidey3.png",
-    iron: null,
+   // iron: null,
     side: "left"
   },
   {
@@ -384,7 +384,7 @@ const story = [
     bgClass: "bg-intro",
     bgText: "REGISTER\nNOW",
     spidey: "images/spidey3.png",
-    iron: null,
+   // iron: null,
     side: "left"
   }
 ];
@@ -644,3 +644,124 @@ function createTechParticles() {
 
 // Run this immediately
 createTechParticles();
+// =========================================
+// INTERACTIVE INTRO LOGIC (Paste at bottom)
+// =========================================
+
+const canvas = document.getElementById('neuro-canvas');
+const ctx = canvas ? canvas.getContext('2d') : null;
+const tiltCard = document.getElementById('tilt-card');
+
+if (canvas && ctx && tiltCard) {
+    
+    // 1. SETUP CANVAS SIZE
+    let width, height;
+    function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // 2. PARTICLE SYSTEM (THE "NEURO" NODES)
+    const particles = [];
+    const particleCount = 60; // Number of dots
+    const connectionDistance = 150; // How far lines reach
+    const mouseDistance = 200; // How far mouse interacts
+
+    // Mouse Position
+    const mouse = { x: null, y: null };
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        
+        // 3. APPLY 3D TILT EFFECT
+        // Calculate center of screen
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        
+        // Calculate tilt (Max 15 degrees)
+        const dx = (e.clientX - cx) / cx; // -1 to 1
+        const dy = (e.clientY - cy) / cy; // -1 to 1
+        
+        // Apply rotation (Reversed for natural feel)
+        tiltCard.style.transform = `rotateY(${dx * 10}deg) rotateX(${-dy * 10}deg)`;
+    });
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.vx = (Math.random() - 0.5) * 1.5; // Velocity X
+            this.vy = (Math.random() - 0.5) * 1.5; // Velocity Y
+            this.size = Math.random() * 2 + 1;
+        }
+
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+
+            // Bounce off edges
+            if (this.x < 0 || this.x > width) this.vx *= -1;
+            if (this.y < 0 || this.y > height) this.vy *= -1;
+        }
+
+        draw() {
+            ctx.fillStyle = '#00f3ff';
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    // Initialize Particles
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+    }
+
+    // 4. ANIMATION LOOP
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+        
+        particles.forEach((p, index) => {
+            p.update();
+            p.draw();
+
+            // Connect to Mouse
+            if (mouse.x) {
+                const dx = mouse.x - p.x;
+                const dy = mouse.y - p.y;
+                const distance = Math.sqrt(dx*dx + dy*dy);
+                
+                if (distance < mouseDistance) {
+                    ctx.strokeStyle = `rgba(0, 243, 255, ${1 - distance/mouseDistance})`;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(mouse.x, mouse.y); // Line to mouse!
+                    ctx.stroke();
+                }
+            }
+
+            // Connect to other particles (The "Web" effect)
+            for (let j = index; j < particles.length; j++) {
+                const p2 = particles[j];
+                const dx = p.x - p2.x;
+                const dy = p.y - p2.y;
+                const distance = Math.sqrt(dx*dx + dy*dy);
+
+                if (distance < connectionDistance) {
+                    ctx.strokeStyle = `rgba(0, 243, 255, ${0.1 - distance/connectionDistance/10})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.stroke();
+                }
+            }
+        });
+        
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
